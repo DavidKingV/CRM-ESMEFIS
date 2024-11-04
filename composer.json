@@ -1,0 +1,24 @@
+{
+    "name": "vendor/esmefis",
+    "description": "CRM para la gestion de citas y pagos",
+    "type": "project",
+    "license": "Premium",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Esmefis\\": "backend/src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "David Vega",
+            "email": "qet135ui@hotmail.com"
+        }
+    ],
+    "minimum-stability": "alpha",
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "firebase/php-jwt": "^6.10",
+        "phpmailer/phpmailer": "^6.9.2",
+        "twig/twig": "^3.0"
+    }
+}
