@@ -1,8 +1,8 @@
-import { sendFetch } from '../utils/fetch.js';
-import { successAlert, errorAlert } from '../utils/sweetAlert.js';
+import { sendFetch, sendFormData } from '../utils/fetch.js';
+import { successAlert, errorAlert, infoAlert } from '../utils/sweetAlert.js';
 import { validateForm, capitalizeFirstLetter, inputLowerCase } from '../utils/validate.js';
 
-const Path = '/api/Clients.php';
+const Path = 'api/Clients.php';
 
 $(function() {
     $("#NewClientForm").submit(function(e) {
@@ -14,6 +14,23 @@ $(function() {
         });
         if($(this).valid()){
             SendNewClient(data);
+        }
+    });
+
+    $("#UploadExcelForm").submit(function(e) {
+        e.preventDefault();
+        const fileInput = $("#formFile");
+        const file = fileInput.prop('files')[0];
+        const allowedExtensions = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'];
+
+        if (file && !allowedExtensions.includes(file.type)) {
+            errorAlert('El archivo seleccionado no es un archivo de Excel');
+            return;
+        }else{
+            let formData = new FormData(this);
+            formData.append('action', 'uploadExcel'); // Aquí se añade el action
+            if (file) formData.append('excelFile', file);
+            UploadExcel(formData);
         }
     });
 
@@ -92,10 +109,33 @@ $(function() {
 const SendNewClient = async (data) => {
     const response = await sendFetch(Path, 'POST', { action: 'addClient', ...data });
     const result = await response.json();
-    if (response.success){
+    if (result.success){
         successAlert(result.message);
         $("#NewClientForm").trigger("reset");        
     }else{
         errorAlert(result.message);
     }
-};
+}
+
+const UploadExcel = async (data) => {
+    const response = await sendFormData(Path, 'POST', data);
+    const result = await response.json();
+    if (result.success){
+        successAlert(result.message);
+        $("#UploadExcelForm").trigger("reset");        
+    }else if(!result.success && result.errors){
+        let errors = result.errors;
+        let errorMessage = '';
+
+        errors.forEach(error => {
+            errorMessage += 'Algunos datos no se guardaron: <br>';
+            errorMessage += `Fila ${error.row}: ${error.error}`;
+            errorMessage += '<br>';
+        });
+
+        infoAlert(errorMessage);
+    }
+    else{
+        errorAlert(result.message);
+    }
+}

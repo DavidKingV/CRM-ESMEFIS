@@ -87,34 +87,43 @@ if(!$verifyLocalSession['success']){
                                             </div>
                                             <div class="mb-3">
                                                 <label for="program" class="form-label">Programa</label>
-                                                <select class="form-control" id="program">
+                                                <select class="form-control" id="program" name="program">
                                                     <option selected value="0">Selecciona una opción</option>
-                                                    <option value="Lic Fisioterapia">Lic Fisioterapia</option>
-                                                    <option value="Esp. Rehabilitación Integral">Esp. Rehabilitación Integral</option>
-                                                    <option value="Diplomado Diagnostico del Pie e Implementación de Plantillas Ortopédicas">Diplomado Diagnostico del Pie e Implementación de Plantillas Ortopédicas</option>
-                                                    <option value="Curso de Punción Seca">Curso de Punción Seca</option>
-                                                    <option value="Curso de Vendaje Neuromuscular">Curso de Vendaje Neuromuscular</option>
-                                                    <option value="Curso de Infiltración Articular">Curso de Infiltración Articular</option>
-                                                    <option value="Curso de Electroterapia">Curso de Electroterapia</option>
-                                                    <option value="Lic. Derecho">Lic. Derecho</option>
-                                                    <option value="Lic. Administración">Lic. Administración</option>
-                                                    <option value="Lic. Contaduría">Lic. Contaduría</option>
-                                                    <option value="Lic. Ciencias de la Educación">Lic. Ciencias de la Educación</option>
-                                                    <option value="Lic. Negocios Internacionales">Lic. Negocios Internacionales</option>
-                                                    <option value="Lic. Turismo">Lic. Turismo</option>
-                                                    <option value="Lic. Diseño Gráfico">Lic. Diseño Gráfico</option>
-                                                    <option value="Otro">Otro</option>
+                                                    <option value="1">Esp. Rehabilitación Integral</option>
+                                                    <option value="2">Diplomado Diagnostico del Pie e Implementación de Plantillas Ortopédicas</option>
+                                                    <option value="3">Curso de Punción Seca</option>
+                                                    <option value="4">Curso de Vendaje Neuromuscular</option>
+                                                    <option value="5">Curso de Infiltración Articular</option>
+                                                    <option value="6">Curso de Electroterapia</option>
+                                                    <option value="7">Lic Fisioterapia</option>
+                                                    <option value="8">Lic. Derecho</option>
+                                                    <option value="9">Lic. Administración</option>
+                                                    <option value="10">Lic. Contaduría</option>
+                                                    <option value="11">Lic. Ciencias de la Educación</option>
+                                                    <option value="12">Lic. Negocios Internacionales</option>
+                                                    <option value="13">Lic. Turismo</option>
+                                                    <option value="14">Lic. Diseño Gráfico</option>
+                                                    <option value="15">Otro</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3">
                                                 <div class="form-floating">
                                                     <label for="program_type" class="form-label">Tipo de programa</label>
-                                                    <select class="form-control" id="program_type">
+                                                    <select class="form-control" id="program_type" name="program_type">
                                                         <option selected value="0">Selecciona una opción</option>
-                                                        <option value="Ejecutivo">Ejecutivo</option>
+                                                        <option value="Licenciatura ejecutiva">Ejecutivo</option>
                                                         <option value="Titulación por experiencia">Titulación por experiencia</option>
                                                     </select>
                                                 </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="origin" class="form-label">Origen</label>
+                                                <select class="form-control" id="origin" name="origin">
+                                                    <option selected value="0">Selecciona una opción</option>
+                                                    <option value="1">Web</option>
+                                                    <option value="2">Facebook</option>
+                                                    <option value="3">WhatsApp</option>
+                                                </select>
                                             </div>
                                             <hr class="divider">
                                             <div class="mb-3">
@@ -147,11 +156,11 @@ if(!$verifyLocalSession['success']){
                                         <span class="text">Descargar plantilla Excel</span>
                                     </button>
                                     <hr class="divider">
-                                    <form class="py-2">
+                                    <form class="py-2" id="UploadExcelForm" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <div class="mb-3">
                                                 <label for="formFile" class="form-label">Archivo Excel</label>
-                                                <input class="form-control" type="file" id="formFile">
+                                                <input class="form-control" type="file" id="formFile" accept=".xlsx, .xls, .csv" name="excelFile">
                                             </div>
                                             <hr class="divider">
                                             <div class="mb-3">

@@ -40,7 +40,7 @@ export function infoAlert(message) {
     Swal.fire({
         icon: 'info',
         title: 'Información',
-        text: message,
+        html: message,
     })
 }
 
