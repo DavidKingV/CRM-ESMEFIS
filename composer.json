@@ -20,5 +20,9 @@
         "firebase/php-jwt": "^6.10",
         "phpmailer/phpmailer": "^6.9.2",
         "twig/twig": "^3.0"
+    },
+    "config": {
+        "platform-check": false
     }
+        
 }
