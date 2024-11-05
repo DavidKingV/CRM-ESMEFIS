@@ -39,6 +39,7 @@ $(function() {
             }
         })
         .catch(error => {
+            console.error('Error:', error);
             return { success: false, message: error}; // Asegúrate de que se devuelve en caso de error
         });
     });
