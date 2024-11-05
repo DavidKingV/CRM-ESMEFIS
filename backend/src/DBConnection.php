@@ -6,7 +6,7 @@ class DBConnection{
     private $connection;
     
     public function __construct(){
-        GetEnV::cargar();
+        GetEnv::cargar();
 
         $host=$_ENV['DB_HOST'];
         $user=$_ENV['DB_USER'];
