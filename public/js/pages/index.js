@@ -1,7 +1,7 @@
 import { sendFetch } from '../utils/fetch.js';
 import { loadingAlert, successAlertLogin, errorAlert } from '../utils/sweetAlert.js';
 
-var path = "api/Login.php";
+var path = "/api/Login.php";
 
 $(function() {
 
