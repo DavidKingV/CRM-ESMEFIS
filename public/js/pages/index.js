@@ -23,7 +23,7 @@ $(function() {
         sendFetch(path, "POST", { action: "login", ...loginData })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Error en la petición');
+                throw new Error('Ocurrió un error al realizar la petición: ' + response.statusText);
             }
             return response.json();  // Asegúrate de que se está retornando la promesa con la conversión a JSON
         })
