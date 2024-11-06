@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo json_encode([
             'success' => false,
-            'message' => 'Faltan campos requeridos. Lo que se recibio: '.json_encode($data)
+            'message' => 'Faltan campos requeridos. Lo que se recibio: '.json_encode($dataToSend)
         ]);
     }
 } else {
