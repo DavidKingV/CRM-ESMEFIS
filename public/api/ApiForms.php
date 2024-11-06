@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if(!$verifyProgram){
             echo json_encode([
                 'success' => false,
-                'message' => 'La licenciatura seleccionada no es válida.'
+                'message' => 'La licenciatura seleccionada no es válida. Se recibió: '.$program
             ]);
             return;
         }else{
