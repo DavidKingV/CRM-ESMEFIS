@@ -68,7 +68,7 @@ class CustomerData
     }
 
     public function getCustomersData(){
-        $stmt = $this->db->prepare("SELECT clientes_potenciales.*, licenciaturas.nombre AS licenciatura, estatus_cliente.estatus AS labelStatus FROM clientes_potenciales JOIN licenciaturas ON clientes_potenciales.licenciatura = licenciaturas.id JOIN estatus_cliente ON clientes_potenciales.estatus = estatus_cliente.id");
+        $stmt = $this->db->prepare("SELECT potential_clients.*, programs.name AS programs, clients_status.description AS labelStatus FROM potential_clients JOIN programs ON potential_clients.program = programs.id JOIN clients_status ON potential_clients.status = clients_status.id");
         $stmt->execute();
         $result = $stmt->get_result();
         

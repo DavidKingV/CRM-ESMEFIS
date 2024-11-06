@@ -37,14 +37,14 @@ class CustomerDataController{
                 $data[] = array(
                     'success' => true,
                     'id' => $row['id'],
-                    'nombre' => $row['nombre'],
-                    'telefono' => $row['telefono'],
+                    'name' => $row['name'],
+                    'phone' => $row['phone'],
                     'email' => $row['email'],
-                    'licenciatura' => $row['licenciatura'],
-                    'programa' => $row['programa'],
-                    'origen' => $row['origen'],
-                    'fecha_registro' => $row['creacion'],
-                    'estatus' => $row['estatus'],
+                    'program' => $row['program'],
+                    'program_type' => $row['program_type'],
+                    'origin' => $row['origin'],
+                    'create_date' => $row['create_date'],
+                    'status' => $row['status'],
                     'labelStatus' => $row['labelStatus']
                 );
             }

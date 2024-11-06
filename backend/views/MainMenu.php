@@ -38,7 +38,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Opciones:</h6>
             <a class="collapse-item" href="agregar-clientes.php">Agregar</a>
-            <a class="collapse-item" href="cards.html">Lista completa</a>
+            <a class="collapse-item" href="clientes.php">Lista completa</a>
         </div>
     </div>
 </li>
