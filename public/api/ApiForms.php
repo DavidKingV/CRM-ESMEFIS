@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $programLabel = $verifyProgram['program_label'];
         }
 
-        if($origin = null):$origin = 1;endif;
+        if($origin == null):$origin = 1;endif;
 
         $dataToSend = [
             "name" => $name,
