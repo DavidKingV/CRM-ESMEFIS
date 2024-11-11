@@ -95,44 +95,6 @@ if(!$verifyLocalSession['success']){
                             </div>
                         </div>
 
-                        <div class="col-lg-12">
-
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Agregar desde Excel</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>Agrega a varios clientes desde un archivo Excel. Puedes descargar la plantilla desde el siguiente boton: </p>
-                                    <button id="downloadMock" class="btn btn-primary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-download"></i>
-                                        </span>
-                                        <span class="text">Descargar plantilla Excel</span>
-                                    </button>
-                                    <hr class="divider">
-                                    <form class="py-2" id="UploadExcelForm" enctype="multipart/form-data">
-                                        <div class="form-group">
-                                            <div class="mb-3">
-                                                <label for="formFile" class="form-label">Archivo Excel</label>
-                                                <input class="form-control" type="file" id="formFile" accept=".xlsx, .xls, .csv" name="excelFile">
-                                            </div>
-                                            <hr class="divider">
-                                            <div class="mb-3">
-                                                <div class="my-2"></div>
-                                                <button type="submit" class="btn btn-success btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-check"></i>
-                                                    </span>
-                                                    <span class="text">Agregar</span>
-                                                </button>
-                                            </div>
-                                        </div>  
-                                    </form>
-                                </div>
-                            </div>
-
-                        </div>
-
                     </div>
 
                 </div>

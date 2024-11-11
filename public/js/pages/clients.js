@@ -1,8 +1,12 @@
 import { initializeDataTable } from '../utils/dataTables.js';
+import { sendFetch, enviarPeticionAjax } from '../utils/fetch.js';
+import { loadingAlert } from '../utils/sweetAlert.js';
+
 
 var phpPath = 'api/Customers.php';
 
 $(function() {
+
     initializeDataTable('#clientsTable', phpPath, { action: 'getCustomers' }, [ 
         { data: 'id', 'className': 'text-center' },
         { data: 'name', 'className': 'text-center' },
@@ -25,12 +29,12 @@ $(function() {
             }
         }, 'className': 'text-center' },
         { data: 'id', render: function(data, type, row) { 
-            return `<button id="addComents" class="btn btn-success btn-icon-split">
+            return `<a id="addComents" class="btn btn-info btn-icon-split" href="historial-cliente.php?id=`+row.id+`">
                         <span class="icon text-white-50">
-                            <i class="fas fa-check"></i>
+                            <i class="fas fa-eye"></i>
                         </span>
-                        <span class="text">Agregar</span>
-                    </button>`;
+                        <span class="text">Ver registros</span>
+                    </a>`;
         }, 'className': 'text-center' },
         { data: 'id', render: function(data, type, row) { 
             return `<div class="btn-group">
@@ -41,11 +45,12 @@ $(function() {
                         <li><button class="dropdown-item" id="deleteClient">Eliminar</button></li>
                         <li><button class="dropdown-item" id="editClient">Editar</button></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><button class="dropdown-item" id="">Separated link</button></li>
+                        <li><button class="dropdown-item" id="">Ver historial</button></li>
                     </ul>
                     </div>`;
         }, 'className': 'text-center' }
 
         
     ]);
+    
 });

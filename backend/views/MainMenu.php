@@ -47,17 +47,15 @@
 <li class="nav-item">
     <a class="nav-link collapsed dropdown-toggle" role="button" href="#collapseUtilities" data-bs-toggle="collapse" data-target="#collapseUtilities"
         aria-expanded="true" aria-controls="collapseUtilities">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Utilities</span>
+        <i class="fas fa-address-book"></i>
+        <span>Registros</span>
     </a>
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <h6 class="collapse-header">Historial de Registros:</h6>
+            <a class="collapse-item" href="registros.php">Lista de registros</a>
+            <a class="collapse-item" href="historial-cliente.php">Historial por cliente</a>
         </div>
     </div>
 </li>

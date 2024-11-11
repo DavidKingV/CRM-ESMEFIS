@@ -81,7 +81,7 @@ class CustomerData
     }
 
     public function getCustomerInfo($customerId){
-        $stmt = $this->db->prepare("SELECT clientes_potenciales.*, estatus_cliente.estatus AS labelStatus FROM clientes_potenciales JOIN estatus_cliente ON clientes_potenciales.estatus = estatus_cliente.id WHERE clientes_potenciales.id = ?");
+        $stmt = $this->db->prepare("SELECT potential_clients.*, clients_status.description AS labelStatus, programs.name AS programLabel FROM potential_clients JOIN clients_status ON potential_clients.status = clients_status.id JOIN programs ON potential_clients.program = programs.id WHERE potential_clients.id = ?");
         $stmt->bind_param('i', $customerId);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -92,6 +92,90 @@ class CustomerData
 
         $stmt->close();
         return $result;
+    }
+
+    public function addCustomerComment($commentDataArray){
+        $clientId = $commentDataArray['clientId'];
+        $comment = $commentDataArray['comment'];
+
+        $stmt = $this->db->prepare("INSERT INTO clients_comments (client, comment) VALUES (?, ?)");
+        $stmt->bind_param('is', $clientId, $comment);
+        $stmt->execute();
+        $stmt->close();
+        return $clientId;
+    }
+
+    public function getCustomerComments(){
+        $stmt = $this->db->prepare("SELECT * FROM ( SELECT clients_comments.*, potential_clients.name AS clientName, potential_clients.status AS clientStatus, ROW_NUMBER() OVER (PARTITION BY clients_comments.client ORDER BY clients_comments.last_modify DESC) AS rn FROM clients_comments JOIN potential_clients ON clients_comments.client = potential_clients.id ) AS latest_comments WHERE rn = 1;");
+        
+        if(!$stmt) {
+            // Handle prepare statement error
+            return null;
+        }
+        
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result && $result->num_rows === 0) {
+            $stmt->close();
+            return null;
+        }
+    
+        $stmt->close();
+        return $result;
+    }
+
+    public function noCommentsClientsTable(){
+        $stmt = $this->db->prepare("SELECT potential_clients.id, potential_clients.name, potential_clients.phone, potential_clients.program_type, programs.name AS program_name FROM potential_clients LEFT JOIN clients_comments ON potential_clients.id = clients_comments.client LEFT JOIN programs ON potential_clients.program = programs.id WHERE clients_comments.comment IS NULL;");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if($result->num_rows === 0){
+            return null;
+        }
+
+        $stmt->close();
+        return $result;
+    }
+
+    public function updateClientStatus($formData){
+        parse_str($formData, $formDataArray);
+
+        $stmt = $this->db->prepare("UPDATE potential_clients SET status = ? WHERE id = ?");
+        $stmt->bind_param('ii', $formDataArray['clientstatus'], $formDataArray['clientId']);
+        $stmt->execute();
+        
+        if($stmt->affected_rows === 0){
+            return ['success' => false, 'message' => 'No se realizó ningún cambio'];
+        }else{
+            return ['success' => true, 'message' => 'Estatus actualizado'];
+        }
+    }
+
+    public function historyComments($clientId){
+        $stmt = $this->db->prepare("SELECT clients_comments.*, potential_clients.name AS clientName, potential_clients.status AS clientStatus FROM clients_comments JOIN potential_clients ON clients_comments.client = potential_clients.id WHERE clients_comments.client = ? ORDER BY clients_comments.last_modify DESC");
+        $stmt->bind_param('i', $clientId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if($result->num_rows === 0){
+            return null;
+        }
+
+        $stmt->close();
+        return $result;
+    }
+
+    public function deleteComment($commentId){
+        $stmt = $this->db->prepare("DELETE FROM clients_comments WHERE id = ?");
+        $stmt->bind_param('i', $commentId);
+        $stmt->execute();
+        
+        if($stmt->affected_rows === 0){
+            return ['success' => false, 'message' => 'No se eliminó ningún comentario'];
+        }else{
+            return ['success' => true, 'message' => 'Comentario eliminado'];
+        }
     }
 
 }
