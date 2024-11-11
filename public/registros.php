@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -13,6 +12,7 @@ if(!$verifyLocalSession['success']){
     exit();
 }
 ?>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
