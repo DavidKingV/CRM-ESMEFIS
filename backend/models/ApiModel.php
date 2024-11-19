@@ -41,7 +41,7 @@ class ApiModel{
                 // Para otros errores, puedes retornar un mensaje genérico o manejarlo de otra forma
                 return [
                     'success' => false,
-                    'message' => 'Error al enviar los datos, por favor intente de nuevo más tarde'
+                    'message' => 'Error al enviar los datos, por favor intente de nuevo más tarde' + $e->getMessage()
                 ];
             }
         }
