@@ -27,7 +27,7 @@ class ApiModel{
             } else {
                 return [
                     'success' => false,
-                    'message' => 'Error al enviar los datos' + $stmt->error
+                    'message' => 'Error al enviar los datos'. $stmt->error
                 ];
             }
         } catch (mysqli_sql_exception $e) {
@@ -41,7 +41,7 @@ class ApiModel{
                 // Para otros errores, puedes retornar un mensaje genérico o manejarlo de otra forma
                 return [
                     'success' => false,
-                    'message' => 'Error al enviar los datos, por favor intente de nuevo más tarde' + $e->getMessage()
+                    'message' => 'Error al enviar los datos, por favor intente de nuevo más tarde'. $e->getMessage()
                 ];
             }
         }
