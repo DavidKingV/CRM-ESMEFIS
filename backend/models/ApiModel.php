@@ -27,7 +27,7 @@ class ApiModel{
             } else {
                 return [
                     'success' => false,
-                    'message' => 'Error al enviar los datos, por favor intente de nuevo más tarde'
+                    'message' => 'Error al enviar los datos' + $stmt->error
                 ];
             }
         } catch (mysqli_sql_exception $e) {
