@@ -11,7 +11,8 @@ $(function() {
         { data: 'id', 'className': 'text-center' },
         { data: 'name', 'className': 'text-center' },
         { data: 'email', 'className': 'text-center' },
-        { data: 'phone', 'className': 'text-center' },
+        { data: 'programs', 'className': 'text-center' },
+        //{ data: 'phone', 'className': 'text-center' },
         { data: null, render: function(data, type, row) { 
             if (row.status == 1){  
                 return '<span class="badge-warning">'+row.labelStatus+'</span>';

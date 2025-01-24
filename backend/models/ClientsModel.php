@@ -39,10 +39,10 @@ class ClientsModel{
             throw new Exception('El cliente ya existe');
         }
 
-        $stmt = $this->db->prepare("INSERT INTO potential_clients (name, phone, email, program) VALUES (?, ?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO potential_clients (name, phone, email, program, program_type) VALUES (?, ?, ?, ?, ?)");
         
         if($stmt){
-            $stmt->bind_param('sssi', $row[1], $row[3], $row[2], $row[6]);
+            $stmt->bind_param('sssis', $row[0], $row[3], $row[2], $row[4], $row[5]);
             $stmt->execute();
             $stmt->close();
 

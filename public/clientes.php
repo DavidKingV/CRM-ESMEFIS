@@ -82,7 +82,8 @@ if(!$verifyLocalSession['success']){
                                             <th scope="col">ID</th>  
                                                 <th scope="col">Nombre</th>                                                
                                                 <th scope="col">Correo</th>
-                                                <th scope="col">Telefono</th>
+                                                <th scope="col">Teléfono</th>
+                                                <th scope="col">Interes</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Comentarios</th>
                                                 <th scope="col">Acciones</th>
