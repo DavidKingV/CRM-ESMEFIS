@@ -41,6 +41,7 @@ class CustomerDataController{
                     'phone' => $row['phone'],
                     'email' => $row['email'],
                     'program' => $row['program'],
+                    'programLabel' => $row['programs'],
                     'program_type' => $row['program_type'],
                     'origin' => $row['origin'],
                     'create_date' => $row['create_date'],
